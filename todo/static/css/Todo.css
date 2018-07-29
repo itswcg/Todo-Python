@@ -1,0 +1,88 @@
+body {
+    padding-top: 75px;
+    background-color: #e2e2e2 !important;
+}
+
+header .navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+    background-color: white;
+}
+
+header .navbar-brand {
+    font-size: 1.4em;
+    font-weight: 200;
+}
+
+main .container {
+    margin-bottom: 2em;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border-radius: .3em;
+    box-shadow: 0 1px 3px #cccccc;
+    margin-left: 12%;
+    width: 53%;
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    main .sidebar {
+        display: none;
+    }
+
+    main .container {
+        margin-bottom: 2em;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        border-radius: .3em;
+        box-shadow: 0 1px 3px #cccccc;
+        margin-left: 8%;
+        margin-right: 8%;
+        width: auto;
+    }
+
+}
+
+main .sidebar {
+    margin-bottom: 2em;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    border-radius: .3em;
+    box-shadow: 0 1px 3px #cccccc;
+    margin-right: 12%;
+    width: 21%;
+    float: right;
+}
+
+.page-header {
+    margin: 0;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-weight: 100;
+    font-size: 2em;
+}
+
+.navbar-form {
+    position: relative;
+    right: 10px;
+}
+
+.navbar-form button[type="submit"] {
+    position: absolute;
+    top: 24%;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #8590a6;
+}

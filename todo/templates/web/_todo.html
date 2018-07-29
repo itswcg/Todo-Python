@@ -1,0 +1,11 @@
+{% if not todo.is_do %}
+    <a class="list-group-item list-group-item-danger" href="{% url 'todoFinish' todo.id %}">
+        {{ todo.content }}
+        <div style="text-align: right; float: right">{{ todo.create_date.date|date:"m-d" }}</div>
+    </a>
+{% else %}
+    <a class="list-group-item disabled" href="{% url 'todoUnfinish' todo.id %}">
+        {{ todo.content }}
+        <div style="text-align: right; float: right">{{ todo.create_date.date|date:"m-d" }}</div>
+    </a>
+{% endif %}

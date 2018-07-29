@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <form class="form-signin" action="{% url 'signup' %}" method="post" role="form">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="help-block">{{ field.help_text|safe }}</span>
+                {% endif %}
+                {% for error in field.errors %}
+                    <label class="control-label">{{ error }}</label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-lg btn-primary btn-block">注册</button>
+    </form>
+{% endblock %}
+{% block right %}
+    <center><h3>Todo注册</h3></center>
+{% endblock %}

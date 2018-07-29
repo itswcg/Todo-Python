@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link href="{% static 'css/todoapp.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.bullseye-1.0-min.js' %}"></script>
+    <script src="{% static 'js/Todo.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <div style="float: right; color: blue"><a href="{% url 'home' %}"><span class="glyphicon glyphicon-ok
+glyphicon glyphicon-"></span></a></div>
+    <div style="overflow: hidden; margin-bottom: 20px">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">编辑</a></li>
+            <li role="presentation"><a href="#">总结</a></li>
+        </ul>
+    </div>
+
+    <ul class="list-group">
+        {% for todo in todoList %}
+            {% include 'Todo/_task.html' with todo=todo %}
+        {% endfor %}
+    </ul>
+    <div style="float: right">
+        {% include 'paginator.html' with paginator=todoList %}</div>
+{% endblock %}
+
+{% block right %}
+    <form action="{% url 'todoTask' %}" method="post" role="form">
+        <div style="color: #ccc; text-align: left">
+            <div style="text-align: right; float: right">
+                <button type="submit" class="btn btn-success btn-sm">提交</button>
+            </div>
+            备忘
+        </div>
+        <br>
+        {% csrf_token %}
+        <textarea class="form-control" id="task" name="task" rows="20">{{ task.content }}</textarea>
+    </form>
+{% endblock %}

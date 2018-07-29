@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form class="form-signin" method="post" action="{% url 'login' %}" role="form">
+        {% csrf_token %}
+        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username">
+            {% for error in form.username.errors %}
+                <label class="control-label">{{ error }}</label>
+            {% endfor %}
+        </div>
+        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password">
+            {% for error in form.password.errors %}
+                <label class="control-label">{{ error }}</label>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
+        </div>
+    </form>
+{#    <a href="{% url 'oauth_github' %}">github登录</a>#}
+{% endblock %}
+
+{% block right %}
+    <center><h3>Todo登录</h3></center>
+{% endblock %}
