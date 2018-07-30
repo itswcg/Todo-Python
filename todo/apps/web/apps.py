@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class TodoConfig(AppConfig):
-    name = 'Todo'
+class WebConfig(AppConfig):
+    name = 'web'

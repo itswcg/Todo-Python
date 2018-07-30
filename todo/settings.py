@@ -39,6 +39,10 @@ INSTALLED_APPS = [
 
     'captcha',
     'rest_framework',
+
+    'core',
+    'api',
+    'web',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +135,3 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-
-GITHUB_AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
-GITHUB_CLIENTID = '0aef591bad9a77406f10'
-GITHUB_CLIENTSECRET = '5f5f47411620c0e4fa066bff142ac0c21925ceaf'
-GITHUB_CALLBACK = 'http://127.0.0.1:8000/oauth-github/'

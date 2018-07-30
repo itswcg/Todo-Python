@@ -10,7 +10,7 @@
 {% block main %}
     <ul class="list-group">
         {% for todo in results %}
-            {% include 'Todo/_task.html' with todo=todo %}
+            {% include 'web/_task.html' with todo=todo %}
         {% endfor %}
     </ul>
 {% endblock %}
