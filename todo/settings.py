@@ -31,7 +31,7 @@ path.append(root('apps'))
 SECRET_KEY = 'd41mcb*=^@zer!1-%380a-_1_0g3yt=lo6gz50i!u2()_mvq_o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
