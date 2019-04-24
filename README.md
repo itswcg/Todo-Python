@@ -19,3 +19,6 @@ $ python manage.py runserver
 
 ### 欢迎使用
 <https://todo.itswcg.com>
+
+### 同款Go版
+详见 <https://github.com/itswcg/Todo-Go>
