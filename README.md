@@ -17,6 +17,14 @@ $ python manage.py collectstatic
 $ python manage.py runserver
 ```
 
+## Docker_Usage
+```bash
+$ git clone git@github.com:itswcg/Todo.git
+$ cd Todo/
+$ docker build -t todo-python .
+$ docker run -p 8511:8511 -d todo-python
+```
+
 ### 欢迎使用
 <https://todo.itswcg.com>
 
