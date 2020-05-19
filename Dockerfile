@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 ADD requirements /requirements
 
-RUN pip install --no-cache-dir -r /requirements/${REQUIREMENT_CONFIG}.txt -i https://mirrors.aliyun.com/pypi/simple/ \
+RUN pip install --no-cache-dir -r /requirements/${REQUIREMENT_CONFIG}.txt \
     && rm -rf /requirements
 
 ADD . /app
