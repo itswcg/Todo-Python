@@ -1,10 +1,13 @@
 FROM python:3.7
 MAINTAINER itswcg
 
-COPY . /Todo-Python
-WORKDIR /Todo-Python
+ARG REQUIREMENT_CONFIG=production
+ENV PYTHONUNBUFFERED 1
 
-RUN pip3 install -r requirements.txt
-EXPOSE 8511
+ADD requirements /requirements
 
-ENTRYPOINT ["gunicorn", "-w", "2", "todo.wsgi", "-e", "DJANGO_SETTINGS_MODULE=todo.settings", "-b", "0.0.0.0:8511"]
+RUN pip install --no-cache-dir -r /requirements/${REQUIREMENT_CONFIG}.txt \
+    && rm -rf /requirements
+
+ADD . /app
+WORKDIR /app

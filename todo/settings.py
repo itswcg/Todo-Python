@@ -10,11 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import os
+import environ
 from sys import path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+env = environ.Env()
 
 
 # 将apps放入path，否则migrate不了
@@ -31,7 +34,7 @@ path.append(root('apps'))
 SECRET_KEY = 'd41mcb*=^@zer!1-%380a-_1_0g3yt=lo6gz50i!u2()_mvq_o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -91,15 +94,11 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'todo',
-        'USER': 'root',
-        'PASSWORD': 'wcg',
-    }
-}
+DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
+DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -137,9 +136,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'static'),
-)
+STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'static')]
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
