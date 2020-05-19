@@ -1,0 +1,22 @@
+name: DEPLOY
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Publish
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: registry.cn-shanghai.aliyuncs.com/cloudv/todo
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+          registry: registry.cn-shanghai.aliyuncs.com
